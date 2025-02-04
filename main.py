@@ -1,16 +1,33 @@
-# This is a sample Python script.
+# Creating the packing setup
+from Composite import Bag
+from Leaf import Item
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+large_bag = Bag("Large Bag")
+healthy_food_bag = Bag("Healthy Food Bag")
+snacks_bag = Bag("Snacks Bag")
 
+# Creating individual items
+bread = Item("Bread", 0.5)
+cheese = Item("Cheese", 0.3)
+water_bottle = Item("Water Bottle", 1.0)
+corn = Item("Corn", 0.4)
+bamba = Item("Bamba", 0.2)
+bissli = Item("Bissli", 0.2)
+marshmallow = Item("Marshmallow", 0.3)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Constructing the hierarchy
+snacks_bag.add_item(bamba)
+snacks_bag.add_item(bissli)
+snacks_bag.add_item(marshmallow)
+snacks_bag.add_item(water_bottle)
 
+healthy_food_bag.add_item(bread)
+healthy_food_bag.add_item(cheese)
+healthy_food_bag.add_item(snacks_bag)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+large_bag.add_item(healthy_food_bag)
+large_bag.add_item(corn)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Display the setup
+print(large_bag)
+print(f"Total weight: {large_bag.get_weight()} kg")
